@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل استخدام ثيم قِرى</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#24211f; --muted:#716a64; --primary:#6d2634; --primary-hover:#571e29;
+    --tint:#f3e7e1; --sand:#c8aa7a; --line:#efe8dc; --cream:#faf6f0; --surface:#fff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-block-start:90px}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:'Alexandria',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:16px; line-height:1.85;
+  }
+  a{color:var(--primary)}
+  .wrap{max-width:1180px; margin-inline:auto; padding-inline:20px}
+
+  header.top{
+    background:linear-gradient(135deg,var(--primary) 0%,#4b1a24 100%);
+    color:#fff; padding-block:56px 64px;
+  }
+  header.top .mark{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:52px; height:52px; border-radius:14px;
+    background:var(--sand); color:var(--primary);
+    font-weight:900; font-size:26px; margin-block-end:18px;
+  }
+  header.top h1{margin:0 0 10px; font-size:clamp(1.9rem,4vw,2.6rem); font-weight:900}
+  header.top p{margin:0; max-width:62ch; color:#f0dcd6; font-weight:300}
+
+  nav.toc{
+    position:sticky; inset-block-start:0; z-index:20;
+    background:rgba(250,246,240,.94); backdrop-filter:blur(8px);
+    border-block-end:1px solid var(--line);
+  }
+  nav.toc ul{
+    display:flex; gap:6px; overflow-x:auto; list-style:none;
+    margin:0; padding:10px 20px; max-width:1180px; margin-inline:auto;
+    scrollbar-width:none;
+  }
+  nav.toc ul::-webkit-scrollbar{display:none}
+  nav.toc a{
+    display:block; white-space:nowrap; text-decoration:none;
+    padding:7px 14px; border-radius:999px; font-size:14px; font-weight:500;
+    color:var(--muted); border:1px solid transparent;
+  }
+  nav.toc a:hover{background:var(--tint); color:var(--primary); border-color:var(--line)}
+
+  section{padding-block:52px; border-block-end:1px solid var(--line)}
+  section:last-of-type{border:0}
+  h2{
+    font-size:clamp(1.35rem,2.4vw,1.75rem); font-weight:800; margin:0 0 6px;
+    display:flex; align-items:center; gap:12px;
+  }
+  h2 .n{
+    flex:none; width:34px; height:34px; border-radius:10px;
+    background:var(--tint); color:var(--primary);
+    display:grid; place-items:center; font-size:15px; font-weight:800;
+  }
+  h2 + .lede{margin:0 0 26px; color:var(--muted); max-width:70ch}
+  h3{font-size:1.05rem; font-weight:700; margin:28px 0 8px}
+
+  .card{
+    background:var(--surface); border:1px solid var(--line);
+    border-radius:14px; padding:22px 24px; margin-block:16px;
+  }
+  .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+
+  table{width:100%; border-collapse:collapse; margin-block:18px; font-size:15px; background:var(--surface)}
+  th,td{text-align:start; padding:11px 14px; border:1px solid var(--line); vertical-align:top}
+  th{background:var(--tint); font-weight:700; font-size:14px}
+  td code, p code, li code{
+    background:#f4f0e9; border:1px solid var(--line); border-radius:6px;
+    padding:1px 6px; font-size:13px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    direction:ltr; display:inline-block;
+  }
+
+  .note{border-inline-start:4px solid var(--sand); background:#fdfaf4; padding:16px 20px; border-radius:0 12px 12px 0; margin-block:18px}
+  .warn{border-inline-start:4px solid var(--primary); background:#fdf5f4; padding:16px 20px; border-radius:0 12px 12px 0; margin-block:18px}
+  .note strong,.warn strong{display:block; margin-block-end:4px}
+
+  ol.steps{counter-reset:s; list-style:none; padding:0; margin:18px 0}
+  ol.steps li{
+    counter-increment:s; position:relative;
+    padding-inline-start:46px; padding-block:10px 12px;
+  }
+  ol.steps li::before{
+    content:counter(s); position:absolute; inset-inline-start:0; inset-block-start:10px;
+    width:30px; height:30px; border-radius:50%;
+    background:var(--primary); color:#fff;
+    display:grid; place-items:center; font-size:14px; font-weight:700;
+  }
+
+  footer{background:#24211f; color:#cfc7bd; padding-block:38px; font-size:14px}
+  footer a{color:var(--sand)}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:18px; justify-content:space-between; align-items:center}
+
+  @media (max-width:640px){
+    section{padding-block:38px}
+    .card{padding:18px}
+    table{font-size:14px}
+    th,td{padding:9px 10px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark">ق</div>
+    <h1>دليل استخدام ثيم قِرى</h1>
+    <p>ثيم متخصص لمتاجر اللحوم والذبائح على منصة سلة. هذا الدليل يشرح كل إعداد ومكوّن، ويركّز على الجزء الذي يميّز الثيم: كيف يختار عميلك طريقة تجهيز طلبه.</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <ul>
+    <li><a href="#start">البداية</a></li>
+    <li><a href="#identity">هوية المتجر</a></li>
+    <li><a href="#prep">خيارات التجهيز</a></li>
+    <li><a href="#components">المكوّنات</a></li>
+    <li><a href="#product">صفحة المنتج</a></li>
+    <li><a href="#card">بطاقة المنتج</a></li>
+    <li><a href="#mobile">الجوال</a></li>
+    <li><a href="#trouble">حل المشكلات</a></li>
+    <li><a href="#support">الدعم</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+<section id="start">
+  <h2><span class="n">١</span> البداية</h2>
+  <p class="lede">بعد شراء الثيم يصبح متاحًا في متجرك مباشرة. الخطوات التالية تنقلك من التفعيل إلى صفحة رئيسية جاهزة.</p>
+
+  <ol class="steps">
+    <li>من لوحة تحكم سلة افتح <strong>تصميم المتجر ← الثيمات</strong>، ثم فعّل <strong>قِرى</strong>.</li>
+    <li>اضغط <strong>تخصيص</strong> لفتح محرر الثيم. ستجد يمينًا قائمة المكوّنات، ويسارًا معاينة حيّة.</li>
+    <li>ابدأ بمكوّن <strong>واجهة قِرى الرئيسية</strong> وأضف شريحة أو أكثر: صورة، عنوان، نص، وزرَّي إجراء.</li>
+    <li>أضف بقية المكوّنات التي تناسب متجرك ورتّبها بالسحب.</li>
+    <li>اضغط <strong>حفظ</strong>. كل تغيير يظهر في المتجر مباشرة.</li>
+  </ol>
+
+  <div class="note">
+    <strong>الترتيب مهم</strong>
+    كل مكوّن اختياري، وأي حقل تتركه فارغًا يختفي قسمه تلقائيًا من الصفحة بدل أن يظهر فارغًا. لن يعرض الثيم يومًا نصًّا تجريبيًا أو مكانًا خاليًا للزائر.
+  </div>
+</section>
+
+<section id="identity">
+  <h2><span class="n">٢</span> هوية المتجر</h2>
+  <p class="lede">الشعار والاسم والوصف واللون تُقرأ افتراضيًا من إعدادات متجرك في سلة. لكن الثيم يوفّر بديلًا لكل منها في حال أردت هوية مختلفة دون تعديل بيانات المتجر نفسه.</p>
+
+  <table>
+    <thead><tr><th>الإعداد</th><th>ماذا يفعل</th></tr></thead>
+    <tbody>
+      <tr><td><strong>شعار الثيم</strong></td><td>يستبدل شعار المتجر في الهيدر والفوتر. اتركه فارغًا ليُستخدم شعار المتجر.</td></tr>
+      <tr><td><strong>اسم العلامة التجارية</strong></td><td>يستبدل اسم المتجر أينما ظهر. فارغًا يعني اسم المتجر.</td></tr>
+      <tr><td><strong>وصف العلامة التجارية</strong></td><td>السطر الصغير تحت الشعار.</td></tr>
+      <tr><td><strong>استخدام اللون العنّابي الخاص بالثيم</strong></td><td>مفعّل افتراضيًا، ويطبّق لوحة قِرى العنّابية على كل عناصر المتجر. أطفئه ليستخدم الثيم لون متجرك المضبوط في إعدادات سلة.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>لماذا هذه البدائل موجودة؟</strong>
+    تغيير اسم المتجر أو شعاره أو لونه من إعدادات سلة يتطلّب تحققًا إضافيًا أحيانًا. هذه الحقول تتيح لك ضبط الهوية البصرية فورًا من محرر الثيم، وتبقى إعدادات متجرك الأصلية كما هي.
+  </div>
+</section>
+
+<section id="prep">
+  <h2><span class="n">٣</span> خيارات التجهيز — الجزء الأهم</h2>
+  <p class="lede">ما يميّز قِرى أن طريقة التجهيز تظهر <strong>بطاقات كبيرة قابلة للنقر</strong> أمام العميل بدل قائمة منسدلة صغيرة. لكن ظهورها بهذا الشكل مشروط بنوع الخيار الذي تختاره أنت عند إنشاء المنتج.</p>
+
+  <h3>كيف تُنشئ خيار تجهيز</h3>
+  <ol class="steps">
+    <li>افتح المنتج من لوحة تحكم سلة، ثم تبويب <strong>الخيارات</strong>.</li>
+    <li>أضف خيارًا جديدًا وسمّه بما يفهمه عميلك: «طريقة التجهيز»، «نوع التقطيع»، «التغليف».</li>
+    <li>اختر نوع الخيار: <strong>قائمة منسدلة (اختيار واحد)</strong> أو <strong>اختيار متعدد</strong>.</li>
+    <li>أضف القيم: «قطع كبسة»، «مكعبات»، «شرائح»، «كامل»، «مفروم»… إلخ.</li>
+    <li>احفظ. ستجد الخيارات في صفحة المنتج كبطاقات، والمحدَّد منها بإطار عنّابي وخلفية فاتحة.</li>
+  </ol>
+
+  <div class="warn">
+    <strong>الأنواع التي تظهر كبطاقات</strong>
+    <p style="margin:6px 0 0">فقط <strong>«قائمة منسدلة»</strong> و<strong>«اختيار متعدد»</strong> تتحوّل إلى بطاقات تجهيز.</p>
+    <p style="margin:6px 0 0">أما خيارات <strong>اللون</strong> و<strong>الصور المصغّرة</strong> فتعرضها سلة بشكلها الخاص (دوائر ألوان أو صور)، وهذا مقصود ومناسب لها. وخيارات <strong>النص</strong> و<strong>التاريخ</strong> و<strong>رفع ملف</strong> تبقى حقول إدخال عادية.</p>
+  </div>
+
+  <h3>الخيار المحدَّد يظهر في السلة</h3>
+  <p>عند إضافة المنتج للسلة يعرض قِرى تجهيزه المختار تحت اسم المنتج، ومعه رابط <strong>«تعديل التجهيز»</strong> يعيد العميل لصفحة المنتج ليغيّره. لا حاجة لأي إعداد — يعمل تلقائيًا متى كان للمنتج خيارات.</p>
+
+  <div class="warn">
+    <strong>انتبه للمخزون</strong>
+    إذا نفدت كمية <em>كل</em> قيم الخيار، لن يظهر زر «إضافة للسلة» إطلاقًا، لأن المنتج غير قابل للشراء فعليًا. تأكّد أن قيمة واحدة على الأقل متوفّرة، وإلا رأى الزائر صفحة منتج بلا طريقة شراء.
+  </div>
+</section>
+
+<section id="components">
+  <h2><span class="n">٤</span> المكوّنات الأربعة عشر</h2>
+  <p class="lede">كلها اختيارية، وترتّبها بالسحب في محرر الثيم. الجدول يشرح ما يفعله كل مكوّن وأبرز حقوله.</p>
+
+  <table>
+    <thead><tr><th style="width:200px">المكوّن</th><th>ماذا يعرض</th></tr></thead>
+    <tbody>
+      <tr><td><strong>واجهة قِرى الرئيسية</strong></td><td>البانر الرئيسي. شرائح متعدّدة، لكل شريحة صورة وعنوان ونص وزرّان.</td></tr>
+      <tr><td><strong>نقاط الثقة</strong></td><td>أربع نقاط تطمئن العميل: ذبح يومي، تقطيع، توصيل مبرد، دفع آمن. خيار <em>عرضها كبطاقة عائمة فوق البانر</em>، وخيار <em>ترقيمها بدل الأيقونات</em>.</td></tr>
+      <tr><td><strong>تسوق حسب النوع</strong></td><td>شبكة أو شريط تصنيفات بصور. يمكن ربطه بتصنيفات متجرك مباشرة أو بروابط يدوية.</td></tr>
+      <tr><td><strong>باقات اللحوم المميزة</strong></td><td>شريط منتجات مختارة بعنوان تمهيدي وخلفية اختيارية.</td></tr>
+      <tr><td><strong>تسوق حسب المناسبة</strong></td><td>بطاقات مربّعة للعزائم والولائم والمناسبات.</td></tr>
+      <tr><td><strong>تنبيه الطلب والتجهيز</strong></td><td>شريط تنبيه بأيقونة ونص ورابط — مواعيد الاستلام، آخر موعد للطلب. يمكن عرضه كلافتة ختامية بزرّين.</td></tr>
+      <tr><td><strong>رحلة التجهيز</strong></td><td>خطوات مرقّمة تشرح ما يحدث بين الطلب والتسليم.</td></tr>
+      <tr><td><strong>قصة المتجر والمصدر</strong></td><td>بطاقة مقسومة صورة/نص لتعريف مصادرك. خيار عكس موضع الصورة.</td></tr>
+      <tr><td><strong>الأسئلة الشائعة</strong></td><td>أسئلة قابلة للطي. يمكن إظهار <em>بطاقة توصيل جانبية</em> بجوارها بعنوان ونص وزر.</td></tr>
+      <tr><td><strong>نطاق وخدمة التوصيل</strong></td><td>مناطق التغطية ومواعيدها. خيار دمجه كبطاقة جانبية داخل الأسئلة الشائعة.</td></tr>
+      <tr><td><strong>دليل القطع والطهي</strong></td><td>بطاقات تعليمية عن القطع وطرق طهيها.</td></tr>
+      <tr><td><strong>تجارب العملاء</strong></td><td>آراء العملاء بالاسم والنص.</td></tr>
+      <tr><td><strong>المصادر والعلامات</strong></td><td>شعارات الموردين والعلامات التي تتعامل معها.</td></tr>
+      <tr><td><strong>فيديو تجربة العميل</strong></td><td>فيديو YouTube. ضع <strong>معرّف الفيديو فقط</strong> لا الرابط الكامل — أي الجزء بعد <code>v=</code>.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>لا ادعاءات مكتوبة داخل الثيم</strong>
+    لن تجد في قِرى مدينة أو مدّة توصيل أو شهادة مكتوبة في الكود. كل نص تجاري يخرج من حقل تملؤه أنت، لأنك وحدك تعرف ما تستطيع الالتزام به.
+  </div>
+</section>
+
+<section id="product">
+  <h2><span class="n">٥</span> صفحة المنتج</h2>
+  <p class="lede">إعدادات صفحة المنتج تجدها في محرر الثيم ضمن مجموعة إعدادات الثيم.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3 style="margin-top:0">نقاط الثقة الثلاث</h3>
+      <p style="margin:0">ثلاث نقاط قصيرة تحت صندوق الشراء، لكل واحدة عنوان وملاحظة. استخدمها للتبريد أو الاسترجاع أو مواعيد التسليم. اتركها فارغة لتختفي.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">تبويب «التخزين والحفظ»</h3>
+      <p style="margin:0">عند تعبئته يظهر تبويب ثانٍ بجانب «الوصف» في صفحة المنتج. مناسب لتعليمات التبريد والتجميد. فارغًا يعني تبويبًا واحدًا فقط.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">رقم الموديل (SKU)</h3>
+      <p style="margin:0">مطفأ افتراضيًا. أكثر متاجر اللحوم لا تحتاج عرضه للعميل، لكن فعّله إن كان جزءًا من نظام طلباتك.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">مسار التنقل والصور</h3>
+      <p style="margin:0">تحكّم في إظهار مسار التنقل، وطريقة عرض صور المنتج، وتفعيل التكبير عند المرور على الصورة.</p>
+    </div>
+  </div>
+</section>
+
+<section id="card">
+  <h2><span class="n">٦</span> بطاقة المنتج</h2>
+  <p class="lede">شكل البطاقة يؤثّر على كل صفحات المتجر: الرئيسية، التصنيفات، نتائج البحث.</p>
+
+  <table>
+    <thead><tr><th>الإعداد</th><th>الأثر</th></tr></thead>
+    <tbody>
+      <tr><td><strong>كثافة بطاقة المنتج</strong></td><td>تحكم في المساحات داخل البطاقة. اختر المريحة لعدد منتجات قليل، والمضغوطة لكتالوج كبير.</td></tr>
+      <tr><td><strong>إظهار تقييم المنتج</strong></td><td>يعرض النجوم على البطاقة. أخفِه إن كان متجرك جديدًا وبلا تقييمات بعد.</td></tr>
+      <tr><td><strong>إظهار زر المفضلة</strong></td><td>أيقونة القلب أعلى البطاقة.</td></tr>
+      <tr><td><strong>إظهار الإضافة السريعة</strong></td><td>زر «إضافة للسلة» داخل البطاقة نفسها.</td></tr>
+      <tr><td><strong>أعلمني عند التوفر</strong></td><td>يظهر بديلًا لزر الشراء على المنتجات النافدة، فيلتقط طلبًا محتملًا بدل خسارته.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="mobile">
+  <h2><span class="n">٧</span> الجوال</h2>
+  <p class="lede">أكثر طلبات متاجر اللحوم تأتي من الجوال، والثيم مبني على ذلك.</p>
+  <ul>
+    <li><strong>صف تصنيفات يتمرّر أفقيًا</strong> أسفل شريط البحث، ليصل العميل للأقسام بلمسة.</li>
+    <li><strong>بحث ظاهر دائمًا</strong> لا مخفيًا خلف أيقونة.</li>
+    <li><strong>تثبيت زر الإضافة والكمية أسفل الشاشة</strong> في صفحة المنتج — إعداد قابل للإطفاء.</li>
+    <li><strong>فلاتر التصنيفات</strong> تفتح من أسفل الشاشة بلمسة واحدة.</li>
+    <li>التخطيط مفحوص من ٣٦٠ إلى ١٩٢٠ بكسل بلا أي تمرير أفقي.</li>
+  </ul>
+</section>
+
+<section id="trouble">
+  <h2><span class="n">٨</span> حل المشكلات</h2>
+
+  <table>
+    <thead><tr><th style="width:34%">ما تراه</th><th>السبب والحل</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>خيارات التجهيز تظهر كقائمة منسدلة لا كبطاقات</td>
+        <td>نوع الخيار في المنتج ليس «قائمة منسدلة» ولا «اختيار متعدد». غيّره من تبويب الخيارات في المنتج.</td>
+      </tr>
+      <tr>
+        <td>لا يظهر زر «إضافة للسلة» في صفحة المنتج</td>
+        <td>كل قيم الخيار نفدت كميتها. أعد تخزين قيمة واحدة على الأقل.</td>
+      </tr>
+      <tr>
+        <td>قسم لا يظهر في الصفحة الرئيسية رغم إضافته</td>
+        <td>حقوله الأساسية فارغة. الثيم يخفي الأقسام الفارغة عمدًا — املأ العنوان على الأقل.</td>
+      </tr>
+      <tr>
+        <td>ألوان المتجر لا تطابق قِرى</td>
+        <td>إعداد «استخدام اللون العنّابي الخاص بالثيم» مطفأ، فيُستخدم لون متجرك. فعّله لاستعادة لوحة قِرى.</td>
+      </tr>
+      <tr>
+        <td>الفيديو لا يعمل</td>
+        <td>وُضع الرابط الكامل بدل المعرّف. ضع الجزء بعد <code>v=</code> فقط.</td>
+      </tr>
+      <tr>
+        <td>تصنيف يفتح صفحة فارغة</td>
+        <td>لا منتجات مربوطة به. اربط المنتجات بالتصنيف من لوحة تحكم سلة.</td>
+      </tr>
+      <tr>
+        <td>تغيير حفظته لا يظهر</td>
+        <td>حدّث الصفحة بتجاهل الذاكرة المؤقتة: <code>Ctrl + Shift + R</code>، أو <code>Cmd + Shift + R</code> على ماك.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="support">
+  <h2><span class="n">٩</span> الدعم</h2>
+  <p class="lede">إن واجهت ما لا يغطّيه هذا الدليل، تواصل معنا مباشرة.</p>
+  <div class="card">
+    <p style="margin:0 0 10px"><strong>البريد:</strong> <a href="mailto:ah.aldalbhi@gmail.com">ah.aldalbhi@gmail.com</a></p>
+    <p style="margin:0; color:var(--muted)">لتسريع الرد، أرفق رابط متجرك، واسم الصفحة أو المكوّن، ولقطة شاشة لما تراه.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>ثيم قِرى — مؤونة اللقاء، مجهزة كما تختار</span>
+    <span><a href="#start">عودة لأعلى</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
